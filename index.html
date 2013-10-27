@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -184,6 +185,19 @@
 		          }
 	          }
           }
+          
+          I.bump = function(J) {
+          	if(I.x > J.x){
+          		I.x += 2;
+          	} else {
+          		I.x -= 2;
+          	}
+          	if(I.y > J.y){
+          		I.y += 2;
+          	} else {
+          		I.y -= 2;
+          	}
+          }//end bump
         
           I.explode = function() {
             Sound.play("explosion");
@@ -222,11 +236,11 @@
           }
           
           if(keydown.up) {
-           player.y -= 5 
+           player.y -= 5; 
            player.lastMove = 0;
           }
           if(keydown.down) {
-           player.y += 5 
+           player.y += 5; 
            player.lastMove = 2;
           }
         
@@ -313,6 +327,21 @@
             //  enemy.explode();
               player.explode();
             }
+            
+            // successful collision detection and bumping
+            // created unacceptable lag in game
+            /*
+            for(i = 0; enemies.length > i ;i++){
+	            for(j = 0; enemies.length > j ; j++){
+		            if( i != j){
+		            	if(collides(enemies[i], enemies[j])){
+		            		enemies[i].bump(enemies[j]);
+		            	}//end if collide
+		            }//end self collide check
+            	}//end j for
+            }//end i for
+            */
+            
           });
         }
         
